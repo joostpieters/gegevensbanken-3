@@ -1,0 +1,5 @@
+\select@language {USenglish}
+\contentsline {section}{\numberline {0.1}Assumptions}{3}
+\contentsline {section}{\numberline {0.2}ER-diagram}{3}
+\contentsline {section}{\numberline {0.3}Dividing Large Documents}{3}
+\vspace *{\baselineskip }
