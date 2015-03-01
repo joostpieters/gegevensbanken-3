@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.5-0.9999.3 (MiKTeX 2.9 64-bit) (preloaded format=xelatex 2014.3.20)  1 MAR 2015 17:56
+This is XeTeX, Version 3.1415926-2.5-0.9999.3 (MiKTeX 2.9 64-bit) (preloaded format=xelatex 2014.3.20)  1 MAR 2015 20:11
 entering extended mode
 **S4_G4_assignment_1.tex
 (C:\Users\Zimcke\Documents\GitHub\gegevensbanken\databases_part1\S4_G4_assignment_1.tex
@@ -326,17 +326,22 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 [1
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 125--129
+Underfull \hbox (badness 10000) in paragraph at lines 125--130
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--129
+Underfull \hbox (badness 10000) in paragraph at lines 125--130
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--129
+Underfull \hbox (badness 10000) in paragraph at lines 125--130
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 125--130
 
  []
 
@@ -373,12 +378,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 125--129
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-File: C:/Users/Zimcke/Documents/GitHub/gegevensbanken/er_diagram.jpg Graphic file (type QTm)
- <use  "C:/Users/Zimcke/Documents/GitHub/gegevensbanken/er_diagram.jpg" > [3]
+File: C:/Users/Zimcke/Documents/GitHub/gegevensbanken/databases_part1/er_diagram.jpg Graphic file (type QTm)
+ <use  "C:/Users/Zimcke/Documents/GitHub/gegevensbanken/databases_part1/er_diagram.jpg" > [3]
 (C:\Users\Zimcke\Documents\GitHub\gegevensbanken\databases_part1\S4_G4_assignment_1.aux) ) 
 Here is how much of TeX's memory you used:
  2790 strings out of 429025
- 34883 string characters out of 3167800
+ 34915 string characters out of 3167800
  93956 words of memory out of 3000000
  5993 multiletter control sequences out of 15000+200000
  31664 words of font info for 36 fonts, out of 3000000 for 9000
