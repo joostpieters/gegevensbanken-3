@@ -11,14 +11,14 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=36
-NormalPos.right=1174
-NormalPos.bottom=375
+NormalPos.right=1596
+NormalPos.bottom=693
 Class=LaTeXView
-Document=databases_part1.tex
+Document=S4_G4_assignment_1.tex
 
 [Frame0_View0,0]
-TopLine=85
-Cursor=4651
+TopLine=125
+Cursor=3079
 
 [SessionInfo]
 FrameCount=1
