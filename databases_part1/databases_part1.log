@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.5-0.9999.3 (MiKTeX 2.9 64-bit) (preloaded format=xelatex 2014.3.20)  28 FEB 2015 20:01
+This is XeTeX, Version 3.1415926-2.5-0.9999.3 (MiKTeX 2.9 64-bit) (preloaded format=xelatex 2014.3.20)  1 MAR 2015 15:05
 entering extended mode
 **databases_part1.tex
 (C:\Users\Zimcke\Documents\GitHub\gegevensbanken\databases_part1\databases_part1.tex
@@ -246,15 +246,34 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 95.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-] [2]
-(C:\Users\Zimcke\Documents\GitHub\gegevensbanken\databases_part1\databases_part1.aux) ) 
+]
+Underfull \hbox (badness 10000) in paragraph at lines 123--127
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--127
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--127
+
+ []
+
+File: C:/Users/Zimcke/Documents/GitHub/gegevensbanken/er_diagram.jpg Graphic file (type QTm)
+<use  "C:/Users/Zimcke/Documents/GitHub/gegevensbanken/er_diagram.jpg" >
+
+LaTeX Warning: Float too large for page by 127.00719pt on input line 136.
+
+[2] [3] (C:\Users\Zimcke\Documents\GitHub\gegevensbanken\databases_part1\databases_part1.aux) ) 
 Here is how much of TeX's memory you used:
- 2014 strings out of 429025
- 23257 string characters out of 3167800
- 74457 words of memory out of 3000000
- 5250 multiletter control sequences out of 15000+200000
+ 2020 strings out of 429025
+ 23403 string characters out of 3167800
+ 75457 words of memory out of 3000000
+ 5252 multiletter control sequences out of 15000+200000
  31664 words of font info for 36 fonts, out of 3000000 for 9000
  912 hyphenation exceptions out of 8191
- 27i,6n,24p,230b,193s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,6n,24p,305b,221s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on databases_part1.pdf (2 pages).
+Output written on databases_part1.pdf (3 pages).

@@ -120,13 +120,23 @@
 \section{Assumptions}\label{hints}
 
 
-The tax per port is not multivalue, there is only one taxrate per port (independent from the ship type or other characteristics).\\
-We assume that a ship can't have more than one route simultaneously. 
+The tax per port is not multivalued, there is only one tax-rate per port (independent from the ship type or other characteristics).\\ \\
+We assume that a ship can't have more than one route simultaneously. \\ \\
+To uniquely identify SHIPMENT(s) (a weak entity type) with the same shipbroker and customer, we inserted a custom ID that functions as a partial key. The attributes Weight and Volume are not sufficient, since there could exist multiple shipments with the same weight and volume.\\ \\
+There is no partial key for the weak entity ROUTE, since two routes with the same ports are considered as one and the same.
 
 \section{ER-diagram}
 
+Still have to adjust margins of the page...
 
-Still have to put image here.
+\begin{figure}
+	\centering
+		\includegraphics[width=1.00\textwidth]{C:/Users/Zimcke/Documents/GitHub/gegevensbanken/er_diagram.jpg}
+	\label{fig:opdracht1}
+\end{figure}
+
+
+
 
 %% <== End of hints
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
