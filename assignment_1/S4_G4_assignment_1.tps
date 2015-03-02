@@ -17,8 +17,8 @@ Class=LaTeXView
 Document=S4_G4_assignment_1.tex
 
 [Frame0_View0,0]
-TopLine=125
-Cursor=3079
+TopLine=86
+Cursor=3085
 
 [SessionInfo]
 FrameCount=1
