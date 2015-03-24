@@ -36,13 +36,15 @@ $nAffectedRows = $stmt->rowCount();
 echo $nAffectedRows;
 */
 
-chdir('db2015\gb\connection');
-require_once('ConnectionManager.php');
+//chdir('db2015/gb/connection');
+require_once("db2015/gb/connection/ConnectionManager.php");
 // create a ConnectionManager object
-
-$con = new ConnectionManager();
+$con = new \gb\connection\ConnectionManager();
 $ssn = 1;
 // execute the query
 $customers = $con->executeSelectStatement('SELECT * FROM CUSTOMER WHERE ssn = ?', array($ssn));
-
+foreach($customers as $value)
+{
+  echo $value['first_name'] .'<br />';
+}
 ?>

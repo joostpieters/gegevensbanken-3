@@ -7,7 +7,7 @@ class ConnectionManager {
     function __construct() {
  
         if ( ! isset(self::$PDO) ) { 
-            include('configuration.php');
+            include('db2015/configuration.php');
             self::$PDO = new \PDO( $config["dsn"], $config["username"], $config["password"] );
             self::$PDO->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         }
