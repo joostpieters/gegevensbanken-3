@@ -11,7 +11,7 @@
             <tr><td>Ship id</td><td>Ship name</td><td>type</td></tr>
 <?php
     require_once( "gb/mapper/ShipMapper.php" );
-    $mapper = new gb\mapper\ShipMapper();//
+    $mapper = new gb\mapper\ShipMapper();
     $allShip = $mapper->findAll();
     foreach($allShip as $ship) {
  ?>

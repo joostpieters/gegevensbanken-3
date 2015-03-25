@@ -26,12 +26,11 @@ session_start(); 		// -- session_start() op deze plek is niet erg netjes, maar v
         <li><a href="ships.php">Ships</a></li>        
         <li><a href="create_customer.php">Create new customer</a></li> 
         <li><a href="order_shipment.php">Order shipments</a></li>   
-		<li><a href="test.php"> Conn Manager </a></li>
         
-	
 </ul>
 <h5> Minh Tri Tran</h5>
 <h5> Zimcke Van de Staey</h5>
+<h5> Ruben Van Looy</h5>
 </div>
 <div class="main">
 <h2 class="contentTitle"><?php print $title;?></h2>

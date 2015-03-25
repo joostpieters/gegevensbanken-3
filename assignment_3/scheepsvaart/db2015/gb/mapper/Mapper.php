@@ -14,9 +14,9 @@ abstract class Mapper {
     }
 
     function find( $id ) {
-       
         $rows = self::$con->executeSelectStatement($this->selectStmt(), array($id));
-        $result = array() ;
+        print_r($rows);
+		$result = array() ;
         foreach($rows as $row) {
             $result = $row;
         }

@@ -8,11 +8,11 @@ require_once( "gb/domain/Ship.php" );
 
 class ShipMapper extends Mapper {
 
-    function __construct() {
+    function __construct() 
+	{
         parent::__construct();
-        $this->selectStmt = "SELECT * FROM CUSTOMER where ssn = ?";
-        $this->selectAllStmt = "SELECT * FROM SHIP ";
-        
+        $this->selectStmt = "SELECT * FROM SHIP where ship_id = ?";
+        $this->selectAllStmt = "SELECT * FROM SHIP "; 
     } 
     
     function getCollection( array $raw ) {
@@ -40,7 +40,9 @@ class ShipMapper extends Mapper {
     }
     
     function update( \gb\domain\DomainObject $object ) {
-        
+		$query = "UPDATE SHIP SET ship_name = \'BERL\' WHERE ship_id = 2";
+		$count = self::$con->executeUpdateStatement($query, array());
+        return $count;
     }
 
     function selectStmt() {
