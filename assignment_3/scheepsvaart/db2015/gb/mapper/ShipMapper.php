@@ -40,8 +40,8 @@ class ShipMapper extends Mapper {
     }
     
     function update( \gb\domain\DomainObject $object ) {
-		$query = "UPDATE SHIP SET ship_name = \'BERL\' WHERE ship_id = 2";
-		$count = self::$con->executeUpdateStatement($query, array());
+		$query = "UPDATE SHIP SET ship_name = ?, type = ? WHERE ship_id = ?";
+		$count = self::$con->executeUpdateStatement($query, array($object->getShipName(), $object->getType(), $object->getShipId()));
         return $count;
     }
 
