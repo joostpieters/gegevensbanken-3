@@ -13,6 +13,7 @@ class CustomerMapper extends Mapper {
         $this->selectStmt = "SELECT * FROM CUSTOMER where ssn = ?";
         $this->selectAllStmt = "SELECT * FROM CUSTOMER ";        
     } 
+	
     
     function getCollection( array $raw ) {
         
@@ -70,7 +71,7 @@ class CustomerMapper extends Mapper {
         $cities = $con->executeSelectStatement($selectStmt, array($city));        
         return $this->getCollection($cities);
     }
+	
 }
-
 
 ?>

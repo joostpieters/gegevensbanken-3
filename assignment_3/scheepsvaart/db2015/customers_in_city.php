@@ -14,21 +14,48 @@
 ?>
 <form method="post">
     
+<?php
+    require_once( "gb/mapper/CustomerMapper.php" );    
+    $custMapper = new gb\mapper\CustomerMapper();//
+ ?>
 
+ <?php
+	include('configuration.php');
+	$PDO = new \PDO( $config["dsn"], $config["username"], $config["password"] );
+	$stmt = $PDO->prepare("SELECT DISTINCT CITY FROM CUSTOMER");
+	$stmt->execute(array());
+	$allCustomer = $stmt->fetchAll( \PDO::FETCH_ASSOC);
+?>
+	
 <table style="width: 100%">
     <tr>
         <td style="width: 10%"></td>
         <td style="width: 10%">City</td>
         <td style="width: 40%">
-            <select style="width: 100%">
-                <option value="1">city 1</option>
-                <option value="2">Please retrieve more cities from the database</option>
+            <select style="width: 100%" id="selected_city">
+				  <?php
+				  
+				  $index = 0;
+					foreach ($allCustomer as $customer  ){
+						$index++;
+					?>
+					<option value=<?php $customer['CITY'] ?>><?php echo $customer['CITY']; ?></option>
+					
+					<?php
+					} ?>
             </select>
         </td>
         <td style="width: 10%"><input type="submit" value="List customers in the city" name="list_customer"></td>
         <td style="width: 30%"></td>
     </tr>
 </table>    
+
+<?php 
+		$custMapper->getCustomersInCity(list_customer);
+?>
+
+
+//<?php echo $index; ?>
 	<table>
             <tr>
                 <td>Ssn</td>
@@ -37,13 +64,21 @@
                 <td>Address</td>
                 <td>City</td>
             </tr>
-<?php
-    require_once( "gb/mapper/CustomerMapper.php" );    
-    $custMapper = new gb\mapper\CustomerMapper();//
- ?>
-      
-	
 
+      
+<?php
+    foreach($allCustomer as $customer) {
+ ?>
+       <tr>
+		<td><?php echo $customer->getSsn(); ?></td>
+		<td><?php echo $customer->getFirstName(); ?></td>
+		<td><?php echo $customer->getLastName(); ?></td>
+                <td><?php echo $customer->getAddress(); ?></td>
+                <td><?php echo $customer->getCity(); ?></td>
+	</tr>     
+<?php        
+}
+?>
 </table>
     
 </form>    

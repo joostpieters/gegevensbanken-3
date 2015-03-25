@@ -10,5 +10,9 @@
 ?>
 
 Welcome to the shipping web application!<br /><br />
-Today is ?<br />
+Today is 
+<?php
 
+	echo date('m/d/Y h:i:s a', time());
+?>
+<br /> 

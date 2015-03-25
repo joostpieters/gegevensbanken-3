@@ -8,14 +8,33 @@
 	require("template/top.tpl.php");
 ?>
 
+ <?php
+ require_once( "gb/mapper/ShipmentMapper.php" );
+    $mapper = new gb\mapper\ShipmentMapper();//
+    $allShipments = $mapper->findAll();
+?>
+
 <table>
     <tr>
         <td>Shipment id</td>
         <td>Volume</td>
         <td>Weight</td>        
     </tr>
-</table>            
 
+	
+<?php
+    foreach($allShipments as $shipments) {
+ ?>
+       <tr>
+		<td><?php echo $shipments->getShipmentID(); ?></td>
+		<td><?php echo $shipments->getVolume(); ?></td>
+		<td><?php echo $shipments->getWeight(); ?></td>
+               
+	</tr>             
+<?php        
+}
+?>
+	</table> 
 <?php
 	require("template/bottom.tpl.php");
 ?>
