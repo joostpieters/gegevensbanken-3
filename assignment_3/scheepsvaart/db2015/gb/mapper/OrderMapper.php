@@ -10,7 +10,7 @@ class OrderMapper extends Mapper {
 
     function __construct() {
         parent::__construct();
-        $this->selectStmt = "SELECT * FROM CUSTOMER where ssn = ?";
+        $this->selectStmt = "SELECT * FROM ORDERS where ssn = ?";
         $this->selectAllStmt = "SELECT * FROM ORDERS ";
         
     } 

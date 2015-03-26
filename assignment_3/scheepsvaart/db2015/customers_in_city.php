@@ -29,7 +29,7 @@
         <td style="width: 10%"></td>
         <td style="width: 10%">City</td>
         <td style="width: 40%">
-            <select style="width: 100%">
+            <select style="width: 100%" name="city" id="city">
                 <?php
 				  
 				  $index = 0;
@@ -55,6 +55,35 @@
                 <td>Address</td>
                 <td>City</td>
             </tr>
+
+			<?php
+			 if (isset($_POST['city'])) {
+				$city = $_POST['city'];
+				echo $city;
+				
+				
+				/* query all customers from the selected city */
+				include('configuration.php');
+				$PDO = new \PDO( $config["dsn"], $config["username"], $config["password"] );
+				$stmt = $PDO->prepare("SELECT ssn, fname, lname, address, city FROM CUSTOMER WHERE city = ?");
+				$stmt->execute(array($city));
+				$allCustomer = $stmt->fetchAll( \PDO::FETCH_ASSOC);
+			
+				/* table with new query */
+				foreach($allCustomer as $customer) {?>
+				<tr>
+					<td><?php echo $customer['SSN']; ?></td>
+					<td><?php echo $customer['FNAME']; ?></td>
+					<td><?php echo $customer['LNAME']; ?></td>
+					<td><?php echo $customer['ADDRESS']; ?></td>
+					<td><?php echo $customer['CITY']; ?></td>
+				</tr>     
+				<?php        
+					}
+				}?>
+	</table>
+			
+			
 <?php
     require_once( "gb/mapper/CustomerMapper.php" );    
     $custMapper = new gb\mapper\CustomerMapper();//

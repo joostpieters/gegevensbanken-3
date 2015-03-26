@@ -21,6 +21,8 @@ class UpdateShipController extends PageController
         if (isset($_POST["update_ship"])) 
 		{
 			$object_ship = $this->mapper->find($_POST["ship_id"]);
+			$object_ship->setType($_POST["ship_type"]);
+			$object_ship->setShipName($_POST["ship_name"]);
 			$count = $this->mapper->update($object_ship);
 			print $count;
 		}

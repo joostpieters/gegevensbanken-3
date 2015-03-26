@@ -26,7 +26,7 @@ class CustomerMapper extends Mapper {
     }
 
     protected function doCreateObject( array $array ) {
-        
+        //print_r($array);
         $obj = null;        
         if (count($array) > 0) {
             $obj = new \gb\domain\Customer( $array['ssn'] );
@@ -44,8 +44,15 @@ class CustomerMapper extends Mapper {
         return $obj;
     }
 
+	//TODO
     protected function doInsert( \gb\domain\DomainObject $object ) {
-        /*$values = array( $object->getName() ); 
+			print_r($object);
+			$con = $this->getConnectionManager();
+			$query = "INSERT INTO 'CUSTOMER' ('ssn', 'first_name', 'last_name', 'street', 'number', 'bus', 'postal_code', 'city') VALUES ('$object->getSsn()', '$object->getFirstName()', '$object->getLastName()', '$object->getStreet()', '$object->getNumber()', '$object->getBus()', '$object->getPostalCode()', '$object->getCity()')";
+			print $query;
+			$con->executeUpdateStatement ($query, array());
+		
+		/*$values = array( $object->getName() ); 
         $this->insertStmt->execute( $values );
         $id = self::$PDO->lastInsertId();
         $object->setId( $id );*/

@@ -5,29 +5,10 @@ abstract class DomainObject {
     private $id = -1;
 
     function __construct( $id=null ) {
-        if ( is_null( $id ) ) {
-            $this->markNew();
-        } else {
+        if ( !is_null( $id ) ) {
             $this->id = $id;
         }
     }
-
-    function markNew() {
-        ObjectWatcher::addNew( $this );
-    }
-
-    function markDeleted() {
-        ObjectWatcher::addDelete( $this );
-    }
-
-    function markDirty() {
-        ObjectWatcher::addDirty( $this );
-    }
-
-    function markClean() {
-        ObjectWatcher::addClean( $this );
-    }
-
 
     function getId( ) {
         return $this->id;
