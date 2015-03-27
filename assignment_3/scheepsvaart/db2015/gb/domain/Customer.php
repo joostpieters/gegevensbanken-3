@@ -15,7 +15,7 @@ class Customer extends DomainObject {
     private $city;
 
     function __construct( $id=null ) {
-     
+        //$this->name = $name;
         parent::__construct( $id );
     }
     
@@ -23,7 +23,7 @@ class Customer extends DomainObject {
         $this->ssn = $ssn;        
     }
 
-    function getSsn() {
+    function getSsn( ) {
         return $this->ssn;
     }
     

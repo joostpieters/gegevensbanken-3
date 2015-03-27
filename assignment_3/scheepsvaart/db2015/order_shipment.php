@@ -59,17 +59,17 @@
     <table style="width: 100%">
         <tr>
             <td>Shipment id</td>
-            <td><input type="text" value=""></td>
+            <td><input type="text" name="shipment_id" value=""></td>
             <td>Volume</td>
-            <td><input type="text" value=""></td>
+            <td><input type="text" name="volume" value=""></td>
             <td>Weight</td>
-            <td><input type ="text" value = ""></td>            
+            <td><input type ="text" name="weight" value = ""></td>            
         </tr>
         <tr>
             <td>Price</td>
-            <td><input type ="text" value = ""></td>
+            <td><input type ="text" name="price" value = ""></td>
             <td>Date</td>
-            <td><input type="text" value=""></td>
+            <td><input type="text" name="order_date" value=""></td>
             <td></td>
             <td></td>
             <td></td>            
@@ -86,7 +86,7 @@
         <tr>
             <td style="width: 15%">Broker name</td>
             <td colspan="5" style="width: 85%">
-                <select style="width: 50%">
+                <select style="width: 50%" name="ship_broker_name">
                     <?php
                     foreach($allShipBroker as $broker) {
                         echo "<option value=\"", $broker->getName(), "\">", $broker->getName(), "</option>" ;

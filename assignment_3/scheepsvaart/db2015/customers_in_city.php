@@ -10,7 +10,7 @@
 
     require_once( "gb/controller/ListCustomerInCityController.php" );
     $filterController = new gb\controller\ListCustomerInCityController();
-    $filterController->process();
+    $customersInCity = $filterController->process();
 ?>
 
 <?php
@@ -29,14 +29,14 @@
         <td style="width: 10%"></td>
         <td style="width: 10%">City</td>
         <td style="width: 40%">
-            <select style="width: 100%" name="city" id="city">
+            <select style="width: 100%" name="city">
                 <?php
 				  
 				  $index = 0;
 					foreach ($allCustomer as $customer  ){
 						$index++;
 					?>
-					<option value=<?php $customer['CITY'] ?>><?php echo $customer['CITY']; ?></option>
+					<option value="<?php echo $customer['CITY'];?>"><?php echo $customer['CITY']; ?></option>
 					
 					<?php
 					} ?>
@@ -46,7 +46,7 @@
         <td style="width: 30%"></td>
     </tr>
 </table>    
-
+<br>
 	<table>
             <tr>
                 <td>Ssn</td>
@@ -55,32 +55,23 @@
                 <td>Address</td>
                 <td>City</td>
             </tr>
+	
 
 			<?php
-			 if (isset($_POST['city'])) {
-				$city = $_POST['city'];
-				echo $city;
-				
-				
-				/* query all customers from the selected city */
-				include('configuration.php');
-				$PDO = new \PDO( $config["dsn"], $config["username"], $config["password"] );
-				$stmt = $PDO->prepare("SELECT ssn, fname, lname, address, city FROM CUSTOMER WHERE city = ?");
-				$stmt->execute(array($city));
-				$allCustomer = $stmt->fetchAll( \PDO::FETCH_ASSOC);
-			
-				/* table with new query */
-				foreach($allCustomer as $customer) {?>
+			if (isset($_POST["list_customer"])) {
+				foreach($customersInCity as $customer) {?>
 				<tr>
-					<td><?php echo $customer['SSN']; ?></td>
-					<td><?php echo $customer['FNAME']; ?></td>
-					<td><?php echo $customer['LNAME']; ?></td>
-					<td><?php echo $customer['ADDRESS']; ?></td>
-					<td><?php echo $customer['CITY']; ?></td>
+					<td><?php echo $customer->getSsn(); ?></td>
+					<td><?php echo $customer->getFirstName(); ?></td>
+					<td><?php echo $customer->getLastName(); ?></td>
+					<td><?php echo $customer->getAddress(); ?></td>
+					<td><?php echo $customer->getCity(); ?></td>
 				</tr>     
 				<?php        
 					}
-				}?>
+				}
+				?>
+				
 	</table>
 			
 			

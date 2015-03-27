@@ -36,7 +36,16 @@ class ShipmentMapper extends Mapper {
     }
 
     protected function doInsert( \gb\domain\DomainObject $object ) {
-        
+        $con = $this->getConnectionManager();
+		$query = 'INSERT INTO SHIPMENT (shipment_id, volume, weight) 
+					  VALUES (:shipment_id,:volume,:weight)';
+		$con->executeUpdateStatement ($query, 
+		array
+		(
+			'shipment_id' => $object->getShipmentId(),
+			'volume' => $object->getVolume(),
+			'weight' => $object->getWeight(),
+		));
     }
     
     function update( \gb\domain\DomainObject $object ) {

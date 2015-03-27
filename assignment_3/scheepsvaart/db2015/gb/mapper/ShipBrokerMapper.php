@@ -55,10 +55,10 @@ class ShipBrokerMapper extends Mapper {
     
     function getShipBrokerRevenues() {
         
-        //$con = $this->getConnectionManager();
-        //$selectStmt = "YOUR SQL HERE";
-        //$results = $con->executeSelectStatement($selectStmt, array());        
-        //return $results;
+        $con = $this->getConnectionManager();
+        $selectStmt = "YOUR SQL HERE";
+        $results = $con->executeSelectStatement($selectStmt, array());        
+        return $results;
         
         
     }
