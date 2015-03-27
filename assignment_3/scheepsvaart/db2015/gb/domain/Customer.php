@@ -23,7 +23,7 @@ class Customer extends DomainObject {
         $this->ssn = $ssn;        
     }
 
-    function getSsn( ) {
+    function getSsn() {
         return $this->ssn;
     }
     

@@ -5,6 +5,7 @@ require_once("gb/controller/PageController.php");
 require_once("gb/mapper/CustomerMapper.php" );
 
 class CreateCustomerController extends PageController {
+	
 	private $mapper;
 	
 	public function __construct()
@@ -35,9 +36,8 @@ class CreateCustomerController extends PageController {
 		   $array['city'] = $array[7];
 		   $array['postal_code'] = $array[8];
 		   
-			for ($x = 0; $x <= 8; $x++){
-		   unset($array[$x]);
-		   }
+			for ($x = 0; $x <= 8; $x++) unset($array[$x]);
+		 
 			$object = $this->mapper->createObject($array);
 			$this->mapper->insert($object);
 			
