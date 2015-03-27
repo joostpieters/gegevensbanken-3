@@ -16,7 +16,7 @@
 
 <table>
     <tr>
-        <td>Ship id </td><td><input type="input" name="ship_id" value="<?php echo $_REQUEST["ship_id"]; ?>" /></td>
+        <td>Ship id </td><td><input type="input" name="ship_id" readonly= "true" value="<?php echo $_REQUEST["ship_id"]; ?>" /></td>
     </tr>
     <tr>
         <td>Ship name </td><td><input type="input" name="ship_name" value="<?php echo $_REQUEST["name"]; ?>" /></td>

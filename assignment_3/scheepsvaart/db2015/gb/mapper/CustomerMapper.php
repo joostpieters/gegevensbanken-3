@@ -44,9 +44,7 @@ class CustomerMapper extends Mapper {
         return $obj;
     }
 
-	//TODO
     protected function doInsert( \gb\domain\DomainObject $object ) {
-			//print_r($object);
 			
 			$con = $this->getConnectionManager();
 			$query = 'INSERT INTO CUSTOMER (ssn, first_name, last_name, street, number, bus, postal_code, city) 
@@ -63,10 +61,6 @@ class CustomerMapper extends Mapper {
 				'postal_code' => $object->getPostalCode(),
 				'city' => $object->getCity(),
 			));
-			
-
-			//$con->executeUpdateStatement ($query, array($object->getSsn(), $object->getFirstName(), $object->getLastName(), $object->getStreet(), $object->getNumber(), $object->getBus(), $object->getPostalCode(), $object->getCity()));
-			
 		
 		/*$values = array( $object->getName() ); 
         $this->insertStmt->execute( $values );
