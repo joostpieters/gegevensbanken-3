@@ -16,12 +16,8 @@ class ListCustomerInCityController extends PageController {
     function process() {
         if (isset($_POST["list_customer"])) {
             
-			//echo 'the city is ';
-			//echo  $_POST["city"];
-			
 			$customers = $this->mapper->getCustomersInCity($_POST["city"]);
 			return $customers;
-			
 		}
     }
 	   

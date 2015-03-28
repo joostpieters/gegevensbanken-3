@@ -68,13 +68,9 @@ class ShipBrokerMapper extends Mapper {
 							 AND R.To_port_code = P2.Port_code
 							 AND O.Order_date LIKE '{$dateFormatted}%'
 					   GROUP BY R.Route_id, SB.Name";
-		
 					   
 		$results = $con->executeSelectStatement($selectStmt, array());    
-        return $results;
-		
-        
-        
+        return $results;    
     }
 	
 	private function getPreviousMonthFormatted()

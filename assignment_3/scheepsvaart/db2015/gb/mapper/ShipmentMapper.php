@@ -10,7 +10,7 @@ class ShipmentMapper extends Mapper {
 
     function __construct() {
         parent::__construct();
-        $this->selectStmt = "SELECT * FROM CUSTOMER where ssn = ?"; // TODO
+        $this->selectStmt = "SELECT * FROM SHIPMENT where Shipment_id = ?"; // TODO
         $this->selectAllStmt = "SELECT * FROM SHIPMENT ";
         
     } 
@@ -26,12 +26,15 @@ class ShipmentMapper extends Mapper {
     }
 
     protected function doCreateObject( array $array ) {
-        $obj = new \gb\domain\Shipment( $array['shipment_id'] );
-        
-        $obj->setShipmentId($array['shipment_id']);
-        $obj->setVolume($array['volume']);
-        $obj->setWeight($array['weight']);
-        
+		$obj = null;        
+        if (count($array) > 0) 
+		{
+			$obj = new \gb\domain\Shipment( $array['shipment_id'] );
+			
+			$obj->setShipmentId($array['shipment_id']);
+			$obj->setVolume($array['volume']);
+			$obj->setWeight($array['weight']);
+        }
         return $obj;
     }
 

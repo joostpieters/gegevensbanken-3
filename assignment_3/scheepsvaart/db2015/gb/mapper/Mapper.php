@@ -15,12 +15,11 @@ abstract class Mapper {
 
     function find( $id ) {
         $rows = self::$con->executeSelectStatement($this->selectStmt(), array($id));
-        //print_r($rows);
 		$result = array() ;
         foreach($rows as $row) {
             $result = $row;
         }
-        
+      
         $object = $this->createObject( $result );
         return $object; 
     }
@@ -42,7 +41,7 @@ abstract class Mapper {
     function getConnectionManager() {
         return self::$con;
     }
-    
+   
     abstract function update( \gb\domain\DomainObject $object );
     protected abstract function getCollection( array $raw );
     protected abstract function doCreateObject( array $array );

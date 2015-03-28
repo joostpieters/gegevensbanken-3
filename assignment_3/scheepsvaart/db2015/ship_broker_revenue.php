@@ -10,8 +10,8 @@
  ?>
  
   <?php
-	$allRevenues = $this->mapper->getShipBrokerRevenues();
-?>
+	$fullQuery = $mapper->getShipBrokerRevenues();
+	?>
 
 <table>
     <tr>
@@ -22,20 +22,32 @@
         <td>Date (mm/yyyy)</td>
     </tr>
 	
+
 <?php
-    foreach($allRevenues as $revenue) {
- ?>
-       <tr>
-		<td><?php echo $revenue['ship_broker_name']; ?></td>
-		<td><?php echo $revenue['from_port_code'] ?></td>
-		<td><?php echo $revenue['to_port_code'] ?></td>
-        <td><?php echo $revenue['price'] ?></td>
-        <td><?php echo $revenue['date']		?></td>
-	</tr>     
-<?php        
-}
+	
+    foreach($fullQuery as $subQuery) 
+	{
 ?>
+       <tr>
+		<td><?php echo $subQuery['ship_broker_name']; ?></td>
+		<td><?php echo $subQuery['from_port_name'] ?></td>
+		<td><?php echo $subQuery['to_port_name'] ?></td>
+        <td><?php echo $subQuery['price'] ?></td>
+        <td><?php echo $subQuery['date']?></td>
+	</tr>   
+  
+	
+<?php        
+	}
+?>
+
+
+
 </table>
 <?php
+
 	require("template/bottom.tpl.php");
 ?>
+
+
+

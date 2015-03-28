@@ -22,17 +22,14 @@ class OrderShipmentController extends PageController {
         if (!$this->isSsnNull()) {
             $this->customer = $this->lookupCustomer($_POST["ssn"]);
 
-			
-			if(!is_object($this->customer))
+			if($this->customer == null)
 			{
-			
 				echo "This customer doesn't exist in the database. Please create a new customer "; ?><a href="./create_customer.php">here</a>.<br><br><?php
 			}
         } 
         
-        if (isset($_POST["order_shipment"])){
-
-		
+        if (isset($_POST["order_shipment"]))
+		{
             $this->placeShipmentOrder();
         }
                 
@@ -121,7 +118,10 @@ class OrderShipmentController extends PageController {
     }
     
     function placeShipmentOrder() {
-			$shipment_id = $_POST["shipment_id"];
+
+		if(!$this->integrityConstraintViolate($_POST['shipment_id']))
+		{
+		   $shipment_id = $_POST["shipment_id"];
 		   $volume = $_POST["volume"];
 		   $weight = $_POST["weight"];
 		   
@@ -150,7 +150,17 @@ class OrderShipmentController extends PageController {
 		   	for ($x = 0; $x <= 4; $x++) unset($array2[$x]);
 			$object = $this->orderMapper->createObject($array2);
 			$this->orderMapper->insert($object);
+		}
+		else echo "This shipment already exists. Create another one.";
     }
+	
+	function integrityConstraintViolate($shipment_id)
+	{
+		$object_ship = $this->shipmentMapper->find($shipment_id);
+		$object_order = $this->orderMapper->find($shipment_id);
+		if($object_ship != null && $object_order != null )return true;
+		else return false;
+	}
 }
 
 ?>

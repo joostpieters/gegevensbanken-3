@@ -21,7 +21,6 @@ class CustomerMapper extends Mapper {
         foreach($raw as $row) {
             array_push($customerCollection, $this->doCreateObject($row));
         }
-        
         return $customerCollection;
     }
 
@@ -72,15 +71,40 @@ class CustomerMapper extends Mapper {
         //$values = array( $object->getName(), $object->getId(), $object->getId() ); 
         //$this->updateStmt->execute( $values );
     }
-
+	
     function selectStmt() {
         return $this->selectStmt;
     }
-    
+	
     function selectAllStmt() {
         return $this->selectAllStmt;
     }
-    
+	
+	function getCities()
+	{
+		$con = $this->getConnectionManager();
+        $selectAllStmt = "SELECT DISTINCT city FROM CUSTOMER";
+        $cities = $con->executeSelectStatement($selectAllStmt, array());  
+		
+		for($i = 0; $i < sizeof($cities); $i++)
+		{
+			$initCities[$i] = 
+			array
+				(
+					'ssn' => "",
+					'first_name' => "",
+					'last_name' => "",
+					'street' => "",
+					'number' => "",
+					'bus' => "",
+					'postal_code' => "",
+					'city' => $cities[$i]['city'],
+				);	
+		}
+		
+        return $this->getCollection($initCities);	
+	}
+	
     function getCustomersInCity ($city) {
         
         $con = $this->getConnectionManager();

@@ -22,8 +22,13 @@ class UpdateShipController extends PageController
 			$object_ship->setShipName($_POST["ship_name"]);
 			$count = $this->mapper->update($object_ship);
 			
-			if($count > 0) echo "Update completed";
-			else echo "Not updated";
+			if($count > 0)
+			{
+				$URL = 'update_ship.php?ship_id='.$object_ship->getShipId().'&type='.$object_ship->getType().'&name='.$object_ship->getShipName();
+				header('Location: '.$URL);
+				die();
+			}				
+			else echo "Not updated";	
 			
 		}
     }

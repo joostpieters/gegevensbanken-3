@@ -13,17 +13,16 @@
     $customersInCity = $filterController->process();
 ?>
 
+
 <?php
-	include('configuration.php');
-	$PDO = new \PDO( $config["dsn"], $config["username"], $config["password"] );
-	$stmt = $PDO->prepare("SELECT DISTINCT CITY FROM CUSTOMER");
-	$stmt->execute(array());
-	$allCustomer = $stmt->fetchAll( \PDO::FETCH_ASSOC);
+
+    require_once( "gb/mapper/CustomerMapper.php" );
+    $mapper = new gb\mapper\CustomerMapper();
+	$customerCity = $mapper->getCities();
 ?>
 
 <form method="post">
     
-
 <table style="width: 100%">
     <tr>
         <td style="width: 10%"></td>
@@ -33,10 +32,10 @@
                 <?php
 				  
 				  $index = 0;
-					foreach ($allCustomer as $customer  ){
+					foreach ($customerCity as $customer  ){
 						$index++;
 					?>
-					<option value="<?php echo $customer['CITY'];?>"><?php echo $customer['CITY']; ?></option>
+					<option value="<?php echo $customer->getCity();?>"><?php echo $customer->getCity(); ?></option>
 					
 					<?php
 					} ?>
@@ -74,17 +73,13 @@
 				
 	</table>
 			
-			
-<?php
-    require_once( "gb/mapper/CustomerMapper.php" );    
-    $custMapper = new gb\mapper\CustomerMapper();//
- ?>
-      
 	
+      
 
 </table>
     
-</form>    
+</form>   
+
 <?php
 	require("template/bottom.tpl.php");
 ?>

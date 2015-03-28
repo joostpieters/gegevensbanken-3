@@ -26,19 +26,22 @@ class OrderMapper extends Mapper {
     }
 
     protected function doCreateObject( array $array ) {
-        $obj = new \gb\domain\Order( $array['shipment_id'] );
-		
-        $obj->setShipmentId($array["shipment_id"]);
-		$obj->setSsn($array["ssn"]);
-		$obj->setShipBrokerName($array['ship_broker_name']);
-		$obj->setPrice($array['price']);
-		$obj->setOrderDate($array['order_date']);
-        
+        $obj = null;        
+        if (count($array) > 0) 
+		{
+			$obj = new \gb\domain\Order( $array['shipment_id'] );
+			
+			$obj->setShipmentId($array["shipment_id"]);
+			$obj->setSsn($array["ssn"]);
+			$obj->setShipBrokerName($array['ship_broker_name']);
+			$obj->setPrice($array['price']);
+			$obj->setOrderDate($array['order_date']);
+        }
         return $obj;
     }
 
     protected function doInsert( \gb\domain\DomainObject $object ) {
-         $con = $this->getConnectionManager();
+        $con = $this->getConnectionManager();
 		$query = 'INSERT INTO ORDERS (shipment_id, ssn, ship_broker_name, price, order_date) 
 					  VALUES (:shipment_id,:ssn,:ship_broker_name,:price,:order_date)';
 		$con->executeUpdateStatement ($query, 

@@ -45,7 +45,6 @@ class ShipMapper extends Mapper {
 		$shipType = $object->getType();
 		$shipId = $object->getShipId();
 		
-		print_r($shipType);
 		$rows = self::$con->executeUpdateStatement($query, array($shipName, $shipType, $shipId ));
         return $rows;
     }
