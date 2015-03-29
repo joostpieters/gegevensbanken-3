@@ -6,39 +6,42 @@
 	// Voer de inhoud van "top.inc.php" uit. Deze verzorgt de
 	// algemene pagina lay-out en het menu.
 	require("template/top.tpl.php");
-?>
 
- <?php
- require_once( "gb/mapper/OrderMapper.php" );
+	/* OrderMapper handles queries about orders */
+	require_once( "gb/mapper/OrderMapper.php" );
     $mapper = new gb\mapper\OrderMapper();//
+	
+	/* Collection with all orders */
     $allOrders = $mapper->findAll();
 ?>
 
-<table>
-    <tr>
-        <td>Shipment id</td>
-        <td>Ssn</td>
-        <td>Ship broker name</td>      
-		<td>Price</td>
-		<td>Order date</td>
-    </tr>
-
+	<!-- Table displaying all orders in the database -->
+	<table>
+		<tr>
+			<td>Shipment id</td>
+			<td>Ssn</td>
+			<td>Ship broker name</td>      
+			<td>Price</td>
+			<td>Order date</td>
+		</tr>
 	
-<?php
-    foreach($allOrders as $orders) {
- ?>
+		<?php
+			/* Iterate trough all orders to display their attributes */
+			foreach($allOrders as $orders) {
+		?>
        <tr>
-		<td><?php echo $orders->getShipmentID(); ?></td>
-		<td><?php echo $orders->getSsn(); ?></td>
-		<td><?php echo $orders->getShipBrokerName(); ?></td>
-		<td><?php echo $orders->getPrice(); ?></td>
-		<td><?php echo $orders->getOrderDate(); ?></td>
-               
-	</tr>             
-<?php        
-}
-?>
+			<td><?php echo $orders->getShipmentID(); ?></td>
+			<td><?php echo $orders->getSsn(); ?></td>
+			<td><?php echo $orders->getShipBrokerName(); ?></td>
+			<td><?php echo $orders->getPrice(); ?></td>
+			<td><?php echo $orders->getOrderDate(); ?></td>          
+		</tr>             
+		<?php        
+			}
+		?>
 	</table> 
+	<!-- Table displaying all orders in the database -->
+	
 <?php
 	require("template/bottom.tpl.php");
 ?>

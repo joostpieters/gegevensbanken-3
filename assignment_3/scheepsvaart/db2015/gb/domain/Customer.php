@@ -15,7 +15,6 @@ class Customer extends DomainObject {
     private $city;
 
     function __construct( $id=null ) {
-        //$this->name = $name;
         parent::__construct( $id );
     }
     

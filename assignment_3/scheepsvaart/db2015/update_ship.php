@@ -7,28 +7,35 @@
 	// algemene pagina lay-out en het menu.
 	require("template/top.tpl.php");
 
+	/* Controller handles the updated information about a ship */
     require_once( "gb/controller/UpdateShipController.php" );
     $updateShipController = new gb\controller\UpdateShipController();
     $updateShipController->process();
 ?> 
 
+<!-- User form to edit the information about the selected ship -->
 <form action="" method="post" >
-
-<table>
-    <tr>
-        <td>Ship id </td><td><input type="input" name="ship_id" readonly= "true" value="<?php echo $_REQUEST["ship_id"]; ?>" /></td>
-    </tr>
-    <tr>
-        <td>Ship name </td><td><input type="input" name="ship_name" value="<?php echo $_REQUEST["name"]; ?>" /></td>
-    </tr>
-    <tr>
-        <td>Type</td><td><input type="input" name="ship_type" value="<?php echo $_REQUEST["type"]; ?>" /></td>
-    </tr>
-    <tr>
-        <td></td><td><input type="submit" value="Update" name="update_ship" /></td>
-    </tr>
-</table>
-</form>    
+	<table>
+		<tr>
+			<td>Ship id </td>
+			<td><input type="input" name="ship_id" readonly= "true" value="<?php echo $_REQUEST["ship_id"]; ?>" /></td>
+		</tr>
+		<tr>
+			<td>Ship name </td>
+			<td><input type="input" name="ship_name" value="<?php echo $_REQUEST["name"]; ?>" /></td>
+		</tr>
+		<tr>
+			<td>Type</td>
+			<td><input type="input" name="ship_type" value="<?php echo $_REQUEST["type"]; ?>" /></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="submit" value="Update" name="update_ship" /></td>
+		</tr>
+	</table>
+</form> 
+<!-- User form to edit the information about the selected ship -->
+   
 <?php
 	require("template/bottom.tpl.php");
 ?>

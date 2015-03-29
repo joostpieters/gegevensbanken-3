@@ -12,7 +12,6 @@ class Order extends DomainObject {
 	private $order_date;
 
     function __construct( $id=null ) {
-        //$this->name = $name;
         parent::__construct( $id );
     }
         

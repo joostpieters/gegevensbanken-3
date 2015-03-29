@@ -10,7 +10,6 @@ class Shipment extends DomainObject {
     private $weight;    
 
     function __construct( $id=null ) {
-        //$this->name = $name;
         parent::__construct( $id );
     }
         

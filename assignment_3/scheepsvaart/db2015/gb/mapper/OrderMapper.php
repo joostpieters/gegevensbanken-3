@@ -5,18 +5,18 @@ $EG_DISABLE_INCLUDES=true;
 require_once( "gb/mapper/Mapper.php" );
 require_once( "gb/domain/Order.php" );
 
-
+/* Class handling all queries about orders */
 class OrderMapper extends Mapper {
 
     function __construct() {
         parent::__construct();
         $this->selectStmt = "SELECT * FROM ORDERS where ssn = ?";
         $this->selectAllStmt = "SELECT * FROM ORDERS ";
-        
     } 
     
+	/* Creates a collection with all orders from the database
+	/* @return collection with all orders */
     function getCollection( array $raw ) {
-        
         $orderCollection = array();
         foreach($raw as $row) {
             array_push($orderCollection, $this->doCreateObject($row));
@@ -25,9 +25,13 @@ class OrderMapper extends Mapper {
         return $orderCollection;
     }
 
+	/* Create a new order object with the given attributes 
+	/* @return new order object	*/
     protected function doCreateObject( array $array ) {
         $obj = null;        
-        if (count($array) > 0) 
+        
+		/* Check if there are attributes */
+		if (count($array) > 0) 
 		{
 			$obj = new \gb\domain\Order( $array['shipment_id'] );
 			
@@ -37,13 +41,16 @@ class OrderMapper extends Mapper {
 			$obj->setPrice($array['price']);
 			$obj->setOrderDate($array['order_date']);
         }
+		
         return $obj;
     }
 
+	/* Insert a given order into the database and update it's attributes */
     protected function doInsert( \gb\domain\DomainObject $object ) {
         $con = $this->getConnectionManager();
 		$query = 'INSERT INTO ORDERS (shipment_id, ssn, ship_broker_name, price, order_date) 
 					  VALUES (:shipment_id,:ssn,:ship_broker_name,:price,:order_date)';
+		
 		$con->executeUpdateStatement ($query, 
 		array
 		(
@@ -55,6 +62,7 @@ class OrderMapper extends Mapper {
 		));
     }
     
+	/* Not implemented: update the attributes of a given order object */
     function update( \gb\domain\DomainObject $object ) {
         
     }

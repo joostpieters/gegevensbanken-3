@@ -10,7 +10,6 @@ class Ship extends DomainObject {
     private $type;    
 
     function __construct( $id=null ) {
-        //$this->name = $name;
         parent::__construct( $id );
     }
         
