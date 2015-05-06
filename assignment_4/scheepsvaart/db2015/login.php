@@ -14,6 +14,28 @@
 ?>    
 
 <!-- User form containing information about the customer -->
+
+
+
+
+if notalreadytryconnected
+
+	tentative connection
+	
+		md5 crypt
+		
+		connected
+			
+			query data
+				
+		not connected
+		
+
+else not connected post
+
+	show form
+
+
 <form method="post">
 	<table style="width: 100%">
 

@@ -38,6 +38,7 @@ class CustomerMapper extends Mapper {
             $obj->setSsn($array['ssn']);
 			$obj->setUsername($array['username']);
 			$obj->setPassword($array['password']);
+			$obj->setConnected($array['connected']);
             $obj->setNumber($array["number"]);
             $obj->setFirstName($array['first_name']);
             $obj->setLastName($array['last_name']);
@@ -62,6 +63,7 @@ class CustomerMapper extends Mapper {
 				'ssn' => $object->getSsn(),
 				'username' => $object->getUsernamer(),
 				'password' => $object->getPassword(),
+				'connected' => $object->getConnected(),
 				'first_name' => $object->getFirstName(),
 				'last_name' => $object->getLastName(),
 				'street' => $object->getStreet(),
@@ -73,9 +75,22 @@ class CustomerMapper extends Mapper {
 		
     }
     
-	/* Not implemented: update the attributes of a given customer object */
-    function update( \gb\domain\DomainObject $object ) {
-
+ function update( \gb\domain\DomainObject $object) {
+		$query = "UPDATE CUSTOMER SET connected = ? WHERE ssn = ?";
+		$ssn = $object->getSsn();
+		$username = $object->getUsername();
+		$password = $object->getPassword();
+		$connected = $object->getConnected();
+		$first_name = $object ->getFirstName();
+		$last_name = $object->getLastName();
+		$street = $object->getStreet();
+		$number = $object->getNumber();
+		$bus = $object->getBus();
+		$postal_code = $object->getPostalCode();
+		$city = $object->getCity();
+		
+		$rows = self::$con->executeUpdateStatement($query, array( $connected, $ssn));
+        return $rows;
     }
 	
     function selectStmt() {
@@ -101,6 +116,7 @@ class CustomerMapper extends Mapper {
 					'ssn' => "",
 					'username' => "",
 					'password' => "",
+					'connected' => "",
 					'first_name' => "",
 					'last_name' => "",
 					'street' => "",

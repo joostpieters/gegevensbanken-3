@@ -15,12 +15,10 @@ class Customer extends DomainObject {
     private $bus;
     private $postal_code;
     private $city;
-
-	private $isConnected;
+	private $connected;
 	
     function __construct( $id=null ) {
         parent::__construct( $id );
-		$isConnected = false;
     }
     
     function setSsn( $ssn ) {
@@ -106,12 +104,12 @@ class Customer extends DomainObject {
         return $this->city;
     }
 	
-	function isConnected () {
-		return $this->isConnected;
+	function getConnected () {
+		return $this->connected;
 	}
 	
-	function changeConnection () {
-		$this->isConnected = !$this->isConnected;
+	function setConnected ($connected) {
+		$this->connected = $connected;
 	}
 
 }

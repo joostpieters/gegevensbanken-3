@@ -36,8 +36,11 @@ class LoginController extends PageController {
 			   if(strcmp($password, $password_db) == 0){
 					
 					
-					$customer = $this->mapper->getCustomer($username);
+				$customer = $this->mapper->getCustomer($username);
 				$ssn = $customer[0]->getSsn();
+				$customer[0]->setConnected("1");
+				$count = $this->mapper->update($customer[0]);
+					
 				header("Location: profile.php?&object=".$ssn);
 				die();
 
