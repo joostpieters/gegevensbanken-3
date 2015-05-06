@@ -14,17 +14,5 @@ Today is
 <?php
 
 	echo date('m/d/Y h:i:s a', time());
-	
-	
-	if(isset($_GET["object"]))
-	{
-		$object = $_GET["object"];
-		
-	}
-	
-	
-	
-	
-	
 ?>
 <br /> 

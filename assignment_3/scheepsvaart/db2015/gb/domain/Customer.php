@@ -6,8 +6,6 @@ require_once( "gb/domain/DomainObject.php" );
 class Customer extends DomainObject {    
       
     private $ssn;
-	private $username;
-	private $password;
     private $first_name;
     private $last_name;
     private $street;
@@ -16,11 +14,8 @@ class Customer extends DomainObject {
     private $postal_code;
     private $city;
 
-	private $isConnected;
-	
     function __construct( $id=null ) {
         parent::__construct( $id );
-		$isConnected = false;
     }
     
     function setSsn( $ssn ) {
@@ -30,23 +25,7 @@ class Customer extends DomainObject {
     function getSsn( ) {
         return $this->ssn;
     }
-	
-	function setUsername( $username ) {
-		$this->username = $username;
-	}
-	
-	function getUsername( ) {
-		return $this->username;
-	}
-	
-	function setPassword( $password ) {
-		$this->password = $password;
-	}
-	
-	function getPassword( ) {
-		return $this->password;
-    }
-	
+    
     function setFirstName ( $first_name ) {
         $this->first_name = $first_name;        
     }
@@ -105,14 +84,6 @@ class Customer extends DomainObject {
     function getCity () {
         return $this->city;
     }
-	
-	function isConnected () {
-		return $this->isConnected;
-	}
-	
-	function changeConnection () {
-		$this->isConnected = !$this->isConnected;
-	}
 
 }
 

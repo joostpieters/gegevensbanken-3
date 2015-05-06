@@ -18,7 +18,6 @@ session_start(); 		// -- session_start() op deze plek is niet erg netjes, maar v
 
 <ul>
 	<li><a href="index.php">Home</a></li>
-	<li><a href="login.php">Login</a></li>
 	<li><a href="customers.php">Customers</a></li>
         <li><a href="shipments.php">Shipments</a></li>        
         <li><a href="orders.php">Orders</a></li>
