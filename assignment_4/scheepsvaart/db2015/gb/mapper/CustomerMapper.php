@@ -36,6 +36,8 @@ class CustomerMapper extends Mapper {
             $obj = new \gb\domain\Customer( $array['ssn'] );
 
             $obj->setSsn($array['ssn']);
+			$obj->setUsername($array['username']);
+			$obj->setPassword($array['password']);
             $obj->setNumber($array["number"]);
             $obj->setFirstName($array['first_name']);
             $obj->setLastName($array['last_name']);
@@ -52,12 +54,14 @@ class CustomerMapper extends Mapper {
     protected function doInsert( \gb\domain\DomainObject $object ) {
 			
 			$con = $this->getConnectionManager();
-			$query = 'INSERT INTO CUSTOMER (ssn, first_name, last_name, street, number, bus, postal_code, city) 
+			$query = 'INSERT INTO CUSTOMER (ssn, username, password, first_name, last_name, street, number, bus, postal_code, city) 
 					  VALUES (:ssn,:first_name,:last_name,:street,:number,:bus,:postal_code,:city)';
 			$con->executeUpdateStatement ($query, 
 			array
 			(
 				'ssn' => $object->getSsn(),
+				'username' => $object->getUsernamer(),
+				'password' => $object->getPassword(),
 				'first_name' => $object->getFirstName(),
 				'last_name' => $object->getLastName(),
 				'street' => $object->getStreet(),
@@ -95,6 +99,8 @@ class CustomerMapper extends Mapper {
 			array
 				(
 					'ssn' => "",
+					'username' => "",
+					'password' => "",
 					'first_name' => "",
 					'last_name' => "",
 					'street' => "",
@@ -117,6 +123,20 @@ class CustomerMapper extends Mapper {
 		
         return $this->getCollection($cities);
     }
+	
+	function getCredentials($username) {
+		$con = $this->getConnectionManager();
+		$selectStmt = "SELECT password FROM CUSTOMER where username = ?";
+		$password = $con->executeSelectStatement($selectStmt, array($username));
+		return $password[0];
+	}
+	
+	function getCustomer($username) {
+		$con = $this->getConnectionManager();
+        $selectStmt = "SELECT * FROM CUSTOMER where username = ?";
+        $customer= $con->executeSelectStatement($selectStmt, array($username));     
+        return $this->getCollection($customer);
+	}
 	
 }
 

@@ -26,7 +26,7 @@
 				</tr>
 				<tr>
 					<td>Password </td>
-					<td><input type="text" value="" name="password"></td>
+					<td><input type="password" value="" name="password"></td>
 				</tr>
 			</table>
 			</td>
@@ -36,13 +36,16 @@
 			<td >&nbsp;</td>
 			<td >&nbsp;</td>
 			<td >&nbsp;</td>
-			<td><input type ="submit" name="connect" value="Connect" ></td>
+			<td><input type ="submit" name="connect" value="connect" ></td>
 			<td >&nbsp;</td>
 			<td >&nbsp;</td>
 		</tr>
 		
 	</table>
+	
+	
 </form>    
+
 
 <?php
 	require("template/bottom.tpl.php");

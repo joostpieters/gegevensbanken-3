@@ -3,8 +3,6 @@
 //TODO
 
 
-
-
 namespace gb\controller;
 
 require_once("gb/controller/PageController.php");
@@ -23,23 +21,29 @@ class LoginController extends PageController {
 
 	/* Processes the user form to create a new customer */
     function process() {
-        if (isset($_POST["create_customer"]) ) 
+        if (isset($_POST["connect"]) ) 
 		{
+				
 			
 			/* Only executed if the ssn is already in the database */
-		   if(!$this->integrityConstraintViolate($_POST['ssn']))
+			if($this->integrityConstraintViolate($_POST['username']))
 		   {
-			   $ssn = $_POST["ssn"];
-			   $first_name = $_POST["first_name"];
-			   $last_name = $_POST["last_name"];
-			   $street = $_POST["street"];
-			   $number = $_POST["number"];
-			   $bus = $_POST["bus"];
-			   $mobiphone = $_POST["mobiphone"];
-			   $city = $_POST["city"];
-			   $postal_code = $_POST["postal_code"];
 			   
+			   $username = $_POST["username"];
+			   $password = $_POST["password"];
+			   $password_db = $this->mapper->getCredentials($username);
+				$password_db = implode("", $password_db);
+			   if(strcmp($password, $password_db) == 0){
+					
+					
+					$customer = $this->mapper->getCustomer($username);
+				$ssn = $customer[0]->getSsn();
+				header("Location: profile.php?&object=".$ssn);
+				die();
+
+			   } else echo "Access denied. Please enter the right password";
 			   /* Rename columns for compatibility */
+			   /*
 			   $array = array($ssn, $first_name, $last_name, $street, $number, $bus, $mobiphone, $city, $postal_code);
 			   $array['ssn'] = $array[0];
 			   $array['first_name'] = $array[1];
@@ -52,14 +56,15 @@ class LoginController extends PageController {
 			   $array['postal_code'] = $array[8];
 			   
 				for ($x = 0; $x <= 8; $x++) unset($array[$x]);
-			 
+				*/
 				/* Create a new customer object with the attributes given by the user */
-				$object = $this->mapper->createObject($array);
+				//$object = $this->mapper->createObject($array);
 				
 				/* Insert the new customer into the database */
-				$this->mapper->insert($object);
+				//$this->mapper->insert($object);
 				
-				echo "Customer creation completed";
+				
+				
 		   }
 		   else echo "That customer already exists. Please create a customer with a different ssn.";
 	
