@@ -1,7 +1,7 @@
 <?php
 	// Dit is de titel die op de pagina en in de menubalk
 	// zal verschijnen.
-	$title = "Create a new customer";
+	$title = "Login page";
 
 	// Voer de inhoud van "top.inc.php" uit. Deze verzorgt de
 	// algemene pagina lay-out en het menu.
@@ -17,31 +17,12 @@
 
 
 
-
-if notalreadytryconnected
-
-	tentative connection
-	
-		md5 crypt
-		
-		connected
-			
-			query data
-				
-		not connected
-		
-
-else not connected post
-
-	show form
-
-
 <form method="post">
 	<table style="width: 100%">
 
 		<tr>
-			<td colspan="6">
-			<table style="width: 100%">
+			<td colspan="3">
+			<table style="width: 45%">
 				<tr>
 					<td>Username </td>
 					<td><input type="text" value="" name="username"></td>
@@ -55,12 +36,13 @@ else not connected post
 		</tr>    
 
 		<tr>
+		
 			<td >&nbsp;</td>
 			<td >&nbsp;</td>
+			
+			<td><input type ="submit" name="connect" value="Connect" ></td>
 			<td >&nbsp;</td>
-			<td><input type ="submit" name="connect" value="connect" ></td>
-			<td >&nbsp;</td>
-			<td >&nbsp;</td>
+	
 		</tr>
 		
 	</table>

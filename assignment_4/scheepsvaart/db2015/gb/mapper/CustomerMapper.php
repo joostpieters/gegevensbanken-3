@@ -28,7 +28,7 @@ class CustomerMapper extends Mapper {
 	/* Create a new customer object with the given attributes 
 	/* @return new customer object	*/
     protected function doCreateObject( array $array ) {
-       
+  
         $obj = null;  
 
 		/* Check if there are attributes to be adjusted */
@@ -126,7 +126,7 @@ class CustomerMapper extends Mapper {
 					'city' => $cities[$i]['city'],
 				);	
 		}
-		
+		//print_r($initCities);
 		/* Return the array as a collection */
         return $this->getCollection($initCities);	
 	}
@@ -136,7 +136,6 @@ class CustomerMapper extends Mapper {
         $con = $this->getConnectionManager();
         $selectStmt = "SELECT * FROM CUSTOMER where city = ?";
         $cities = $con->executeSelectStatement($selectStmt, array($city));     
-		
         return $this->getCollection($cities);
     }
 	

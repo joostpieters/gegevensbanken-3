@@ -2,7 +2,7 @@
 	
 	// Dit is de titel die op de pagina en in de menubalk
 	// zal verschijnen.
-	$title = "Shipping database";
+	$title = "Customer account management";
 
 	// Voer de inhoud van "top.inc.php" uit. Deze verzorgt de
 	// algemene pagina lay-out en het menu.
@@ -15,11 +15,9 @@
 	
 ?>
 
-Welcome to the shipping web application!<br /><br />
 
 <?php
 
-	
 	
 	if(isset($_GET["object"]))
 	{
@@ -29,35 +27,43 @@ Welcome to the shipping web application!<br /><br />
 		
 		if($customer[0]->getConnected() == 1){
 		/* Collection containing all customers */
-			echo "\nCustomer is logged in ."
+			echo "\nCustomer is logged in ." ?> <p></p><?php
 			?>
 			<!-- Table with overview of all customers in the database -->
-		<table>
-			<tr>
-				<td>Ssn</td>
-				<td>First name</td>
-				<td>Last name</td>
-				<td>Address</td>
-				<td>City</td>
-				
-			</tr>
-	
-			<tr>
-				<td><?php echo $customer[0]->getSsn(); ?></td>
-				<td><?php echo $customer[0]->getFirstName(); ?></td>
-				<td><?php echo $customer[0]->getLastName(); ?></td>
-				<td><?php echo $customer[0]->getAddress(); ?></td>
-				<td><?php echo $customer[0]->getCity(); ?></td>
-				
-				
-			</tr>     
+		<fieldset>
+		<legend>Account Information </legend>
+			<table>
+				<tr>
+					<td>Ssn</td>
+					<td>First name</td>
+					<td>Last name</td>
+					<td>Address</td>
+					<td>City</td>
+					
+				</tr>
+		
+				<tr>
+					<td><?php echo $customer[0]->getSsn(); ?></td>
+					<td><?php echo $customer[0]->getFirstName(); ?></td>
+					<td><?php echo $customer[0]->getLastName(); ?></td>
+					<td><?php echo $customer[0]->getAddress(); ?></td>
+					<td><?php echo $customer[0]->getCity(); ?></td>
+					
+					
+				</tr>     
 			</table>
+		</fieldset>
+		
+		<fieldset>
+		<legend> Orders</legend>
+		
+		</fieldset>
 			
 			
 	<!-- Table with overview of all customers in the database -->
 		
 <?php		
-		} else  {echo "\nAcces denied. Log in to see customer information"; }
+		} else  {?> Acces denied. <a href="login.php">Log in</a> to see customer information <?php }
 	}
 	
 	?>

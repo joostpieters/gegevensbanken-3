@@ -33,7 +33,7 @@ class LoginController extends PageController {
 			   $password = $_POST["password"];
 			   $password_db = $this->mapper->getCredentials($username);
 				$password_db = implode("", $password_db);
-			   if(strcmp($password, $password_db) == 0){
+			   if(strcmp(md5($password), $password_db) == 0){
 					
 					
 				$customer = $this->mapper->getCustomer($username);
@@ -44,7 +44,7 @@ class LoginController extends PageController {
 				header("Location: profile.php?&object=".$ssn);
 				die();
 
-			   } else echo "Access denied. Please enter the right password";
+			   } else echo "Access denied. Please enter the right username and/or password."; ?> <p></p> <?php
 			   /* Rename columns for compatibility */
 			   /*
 			   $array = array($ssn, $first_name, $last_name, $street, $number, $bus, $mobiphone, $city, $postal_code);
