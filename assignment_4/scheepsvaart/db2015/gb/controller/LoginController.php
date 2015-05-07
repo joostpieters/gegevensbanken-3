@@ -21,30 +21,29 @@ class LoginController extends PageController {
 
 	/* Processes the user form to create a new customer */
     function process() {
+		
         if (isset($_POST["connect"]) ) 
 		{
-				
-			
 			/* Only executed if the ssn is already in the database */
-			if($this->integrityConstraintViolate($_POST['username']))
+			if($this->exists($_POST['username']))
 		   {
 			   
 			   $username = $_POST["username"];
 			   $password = $_POST["password"];
 			   $password_db = $this->mapper->getCredentials($username);
-				$password_db = implode("", $password_db);
-			   if(strcmp(md5($password), $password_db) == 0){
-					
-					
-				$customer = $this->mapper->getCustomer($username);
-				$ssn = $customer[0]->getSsn();
-				$customer[0]->setConnected("1");
-				$count = $this->mapper->update($customer[0]);
-					
-				header("Location: profile.php?&object=".$ssn);
-				die();
-
-			   } else echo "Access denied. Please enter the right username and/or password."; ?> <p></p> <?php
+			   $password_db = implode("", $password_db);
+				
+			   if(strcmp(md5($password), $password_db) == 0)
+			   {
+					$customer = $this->mapper->getCustomer($username);
+					$ssn = $customer[0]->getSsn();
+					$customer[0]->setConnected("1");
+					$count = $this->mapper->update($customer[0]);
+						
+					header("Location: profile.php?&object=".$ssn);
+					die();
+			   } 
+			   else echo "Access denied. Please enter the right username and/or password."; ?> <p></p> <?php
 			   /* Rename columns for compatibility */
 			   /*
 			   $array = array($ssn, $first_name, $last_name, $street, $number, $bus, $mobiphone, $city, $postal_code);
@@ -65,11 +64,9 @@ class LoginController extends PageController {
 				
 				/* Insert the new customer into the database */
 				//$this->mapper->insert($object);
-				
-				
-				
+					
 		   }
-		   else echo "That customer already exists. Please create a customer with a different ssn.";
+		   else echo "Access denied. Please enter the right username and/or password."; ?> <p></p> <?php
 	
         }
     }
@@ -77,7 +74,7 @@ class LoginController extends PageController {
 	/* Check if the ssn already exists in the database 
 	/* @return	true if ssn exists
 	/* 				false if the ssn isn't in the database */
-	protected function integrityConstraintViolate($ssn)
+	protected function exists($ssn)
 	{
 		$object = $this->mapper->find($ssn);
 		if($object != null )return true;

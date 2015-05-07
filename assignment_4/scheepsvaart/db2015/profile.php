@@ -10,12 +10,11 @@
 	
 	/* CustomerMapper handles queries about customers */
 	require_once("gb/mapper/CustomerMapper.php" );
+	require_once( "gb/controller/ProfileController.php" );
     $mapper = new gb\mapper\CustomerMapper();
 	
 	
 ?>
-
-
 <?php
 
 	
@@ -58,11 +57,24 @@
 		<legend> Orders</legend>
 		
 		</fieldset>
+		
+		<?php 
+			$p_controller = new gb\controller\ProfileController($customer[0]->getUsername());
+			$p_controller->process();
+		?>
+		
+		
+	<form method="post">
+			<p></p>
+			<td >&emsp;</td>
+			<td >&emsp;</td>
+			<td><input type ="submit" name="disconnect" value="Disconnect" ></td>
+	</form>    
 			
 			
 	<!-- Table with overview of all customers in the database -->
 		
-<?php		
+		<?php		
 		} else  {?> Acces denied. <a href="login.php">Log in</a> to see customer information <?php }
 	}
 	
