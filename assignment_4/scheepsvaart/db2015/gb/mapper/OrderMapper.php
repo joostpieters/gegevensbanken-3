@@ -74,6 +74,13 @@ class OrderMapper extends Mapper {
     function selectAllStmt() {
         return $this->selectAllStmt;
     }
+	
+	function getOrdersFromCustomer($ssn) {
+		$con = $this->getConnectionManager();
+        $selectStmt = "SELECT * FROM ORDERS where ssn = ?";
+        $orders= $con->executeSelectStatement($selectStmt, array($ssn));     
+        return $this->getCollection($orders);
+	}
     
     
 }

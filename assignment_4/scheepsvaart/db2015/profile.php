@@ -11,8 +11,12 @@
 	/* CustomerMapper handles queries about customers */
 	require_once("gb/mapper/CustomerMapper.php" );
 	require_once( "gb/controller/ProfileController.php" );
-    $mapper = new gb\mapper\CustomerMapper();
+	require_once( "gb/mapper/OrderMapper.php" );
+	require_once("gb/mapper/ShipmentMapper.php");
 	
+    $mapper = new gb\mapper\CustomerMapper();
+	$orderMapper = new gb\mapper\OrderMapper();
+	$shipmentMapper = new gb\mapper\ShipmentMapper();
 	
 ?>
 <?php
@@ -26,7 +30,11 @@
 		
 		if($customer[0]->getConnected() == 1){
 		/* Collection containing all customers */
-			echo "\nCustomer is logged in ." ?> <p></p><?php
+			echo "\n     ";
+			echo $customer[0]->getFirstName();
+			echo " ";
+			echo $customer[0]->getLastName();
+			echo " has logged in ." ?> <p></p><?php
 			?>
 			<!-- Table with overview of all customers in the database -->
 		<fieldset>
@@ -54,7 +62,90 @@
 		</fieldset>
 		
 		<fieldset>
-		<legend> Orders</legend>
+		<legend> Your orders</legend>
+		
+			<!-- Table displaying all orders in the database -->
+	<table>
+		<tr>
+			<td>Shipment id</td>
+			<td>Ship broker name</td>      
+			<td>Price</td>
+			<td>Order date</td>
+			<td>Volume</td>
+			<td>Weight</td>
+		</tr>
+	
+		<?php
+			$allOrders = $orderMapper->getOrdersFromCustomer($customer[0]->getSsn());
+			$numberOfOrders = 0;
+			$amount = 0;
+			$amountVolume = 0;
+			$amountWeight = 0;
+			$min = 100000000000;
+			$max = 0;
+			/* Iterate trough all orders to display their attributes */
+			foreach($allOrders as $order) {
+				$numberOfOrders++;
+				$amount = $amount + $order->getPrice();
+				if($order->getPrice() < $min) $min = $order->getPrice();
+				if($order->getPrice() > $max) $max = $order->getPrice();
+				
+				$shipment = $shipmentMapper->getShipmentInformation($order->getShipmentID());
+				$amountVolume = $amountVolume + $shipment[0]->getVolume();
+				$amountWeight = $amountWeight + $shipment[0]->getWeight();
+		?>
+       <tr>
+			<td><?php echo $order->getShipmentID(); ?></td>
+			<td><?php echo $order->getShipBrokerName(); ?></td>
+			<td><?php echo $order->getPrice(); ?></td>
+			<td><?php echo $order->getOrderDate(); ?></td>          
+			<td><?php echo $shipment[0]->getVolume(); ?></td>
+			<td><?php echo $shipment[0]->getWeight(); ?></td>
+			         
+		</tr>             
+		<?php        
+			}
+			$average = $amount/$numberOfOrders;
+			$averageVolume = $amountVolume/$numberOfOrders;
+			$averageWeight = $amountWeight/$numberOfOrders;
+		?>
+		
+		
+	</table> 
+	<br></br>
+	<table>
+		<tr>
+			<td>Average price of your orders: </td>
+			<td><?php echo number_format($average, 2, ",", " "); ?></td>
+			<td>EURO</td>
+		</tr>
+		<?php if($numberOfOrders > 0){ ?>
+		<tr>
+			<td>Minimum price of your orders: </td>
+			<td><?php echo number_format($min, 2, ",", " "); ?></td>
+			<td>EURO</td>
+		</tr>
+		<tr>
+			<td>Maximum price of your orders: </td>
+			<td><?php echo number_format($max, 2, ",", " "); ?></td>
+			<td>EURO</td>
+		</tr>
+		</table>
+		<br></br>
+		<table>
+		<tr>
+			<td>Average volume of your shipments: </td>
+			<td><?php echo number_format($averageVolume, 2, ",", " "); ?></td>
+		</tr>
+		<tr>
+			<td>Average weight of your shipments: </td>
+			<td><?php echo number_format($averageWeight, 2, ",", " "); ?></td>
+			<td>kg</td>
+		</td>
+		<?php } ?>
+	</table>
+	<!-- Table displaying all orders in the database -->
+		
 		
 		</fieldset>
 		
@@ -68,7 +159,7 @@
 			<p></p>
 			<td >&emsp;</td>
 			<td >&emsp;</td>
-			<td><input type ="submit" name="disconnect" value="Disconnect" ></td>
+			<td><input type ="submit" name="disconnect" value="Log out" ></td>
 	</form>    
 			
 			

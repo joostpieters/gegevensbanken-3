@@ -139,6 +139,35 @@ class CustomerMapper extends Mapper {
         return $this->getCollection($cities);
     }
 	
+	function getCustomersWithSsn($ssn) {
+		$con = $this->getConnectionManager();
+		$selectStmt = "SELECT * FROM CUSTOMER where ssn= ?";
+        $customers = $con->executeSelectStatement($selectStmt, array($ssn));     
+        return $this->getCollection($customers);
+	}
+	
+	function getCustomersWithFname($first_name) {
+		$con = $this->getConnectionManager();
+		$selectStmt = "SELECT * FROM CUSTOMER where first_name = ?";
+        $customers = $con->executeSelectStatement($selectStmt, array($first_name));     
+        return $this->getCollection($customers);
+	}
+	
+		function getCustomersWithLname($last_name) {
+		$con = $this->getConnectionManager();
+		$selectStmt = "SELECT * FROM CUSTOMER where last_name = ?";
+        $customers = $con->executeSelectStatement($selectStmt, array($last_name));     
+        return $this->getCollection($customers);
+	}
+	
+		function getCustomersWithFLname($first_name, $last_name) {
+		$con = $this->getConnectionManager();
+		$selectStmt = "SELECT * FROM CUSTOMER where first_name = ?, last_name = ?";
+        $customers = $con->executeSelectStatement($selectStmt, array($first_name, $last_name));     
+        return $this->getCollection($customers);
+	}
+	
+	
 	function getCredentials($username) {
 		$con = $this->getConnectionManager();
 		$selectStmt = "SELECT password FROM CUSTOMER where username = ?";
@@ -152,6 +181,8 @@ class CustomerMapper extends Mapper {
         $customer= $con->executeSelectStatement($selectStmt, array($username));     
         return $this->getCollection($customer);
 	}
+	
+	
 	
 }
 

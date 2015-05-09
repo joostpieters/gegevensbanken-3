@@ -71,6 +71,13 @@ class ShipmentMapper extends Mapper {
     function selectAllStmt() {
         return $this->selectAllStmt;
     }
+	
+	function getShipmentInformation($shipment_id){
+		$con = $this->getConnectionManager();
+        $selectStmt = "SELECT * FROM SHIPMENT where shipment_id = ?";
+        $shipments= $con->executeSelectStatement($selectStmt, array($shipment_id));     
+        return $this->getCollection($shipments);
+	}
     
     
 }

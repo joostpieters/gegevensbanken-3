@@ -20,6 +20,7 @@ session_start(); 		// -- session_start() op deze plek is niet erg netjes, maar v
 	<li><a href="index.php">Home</a></li>
 	<li><a href="login.php">Login</a></li>
 	<li><a href="customers.php">Customers</a></li>
+	<li><a href="customer_lookup.php">Customer search</a></li>
         <li><a href="shipments.php">Shipments</a></li>        
         <li><a href="orders.php">Orders</a></li>
         <li><a href="customers_in_city.php">Customers in cities</a></li>               

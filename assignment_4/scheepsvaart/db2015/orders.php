@@ -38,8 +38,9 @@
 		</tr>             
 		<?php        
 			}
+			
 		?>
-	</table> 
+	</table>
 	<!-- Table displaying all orders in the database -->
 	
 <?php

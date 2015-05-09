@@ -41,7 +41,7 @@
 			<td >&nbsp;</td>
 			<td >&nbsp;</td>
 			
-			<td><input type ="submit" name="connect" value="Connect" ></td>
+			<td><input type ="submit" name="connect" value="Log in" ></td>
 			<td >&nbsp;</td>
 	
 		</tr>
