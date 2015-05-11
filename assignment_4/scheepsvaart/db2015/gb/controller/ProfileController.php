@@ -1,6 +1,5 @@
 <?php
 
-
 namespace gb\controller;
 
 require_once("gb/controller/PageController.php");
@@ -31,13 +30,15 @@ class ProfileController extends PageController
 				$customer[0]->setConnected("0");
 				$count = $this->mapper->update($customer[0]);
 		
-				header("Location: login.php");
-				die();
+			echo("<script>location.href = 'login.php';</script>");
+				//header("Location: login.php");
+				//die();
         }
     }
 	
 
 	
 }
+
 
 ?>
